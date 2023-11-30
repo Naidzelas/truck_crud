@@ -13,12 +13,9 @@ class TransportController extends Controller
 
     public function index(Request $request, Transport $transport)
     {
-        $trucks = $transport::with('truckSubUnits')->get();
+        $trucks = $transport::query()->get();
 
-        return view('transports.index', compact([
-            'request',
-            'trucks'
-        ]));
+        return view("transports.index", compact('trucks'));
     }
     public function create(Request $request, Transport $transport)
     {
@@ -32,10 +29,11 @@ class TransportController extends Controller
         $validated = $this->validate($request, [
             'unit_number' => 'required|string',
             'year' => 'required|int',
+            'notes' => 'string',
         ]);
 
         $transport->fill($validated)->save();
-        return view('transports.index');
+        return redirect('transports');
 
     }
     public function update(Request $request, Transport $transport)
@@ -47,12 +45,12 @@ class TransportController extends Controller
         ]);
 
         $transport->fill($request->validated())->save();
-        return view('transports.index');
+        return redirect('transports');
 
     }
     public function store(Request $request, Transport $transport)
     {
-        return view('transports.index');
+        return redirect('transports');
     }
 
     public function destroy(Request $request, Transport $transport)

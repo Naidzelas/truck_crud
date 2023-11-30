@@ -24,14 +24,13 @@
                     >
                 </div>
                 <div class="form-group">
-                <label>Note</label>
-                <textarea
-                    type="text" 
-                    class="form-control" 
-                    name="notes" 
-                    id="notes"
-                    >
-                </textarea>
+                    <label>Note</label>
+                    <input
+                        type="text" 
+                        class="form-control" 
+                        name="notes" 
+                        id="notes"
+                        >
                 <div>
                 <input 
                     type="submit" 
@@ -43,6 +42,7 @@
         </div>
 
         <table>
+            <th>Id</th>
             <th>Unit number</th> 
             <th>Year</th>
             <th>Notes</th> 
